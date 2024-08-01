@@ -17,7 +17,7 @@ Inspired by the methodology exposed in the article ["Similarity encoding for lea
 <!-- GETTING STARTED -->
 ## Getting Started
 
-You can start making use of the classes by downloading the `.py` files (`StringAgglomerativeEncoder.py` and `StringDistanceEncoder.py`) and then moving them in your working directory. Then just import the classes as follows:
+You can start making use of the classes by downloading the `.py` files (`StringAgglomerativeEncoder.py` and `StringDistanceEncoder.py`) and then moving them to your working directory. Then just import the classes as follows:
 
 ```python 
 from StringAgglomerativeEncoder import StringAgglomerativeEncoder
