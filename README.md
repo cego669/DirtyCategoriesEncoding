@@ -4,10 +4,13 @@
   <img src="agglomerating_categories.png" alt="dirtycategoriesencoding" title="Dirty Categories Visualization and Clustering" width="700"/>
 </p>
 
-Inspired by the article ["Similarity encoding for learning with dirty categorical variables"](https://arxiv.org/abs/1806.00979), I decided to create classes capable of clustering dirty categories and also reducing the dimensionality of dirty categories through the use of the `CountVectorizer` (n-gram character vectorization) and `TruncatedSVD` (dimensionality reduction method similar to Principal Component Analysis, but more appropriate for sparse matrices). The classes present in this project, that is, `StringAgglomerativeEncoder` and `StringDistanceEncoder` are **compatible with the `scikit-learn` API**, so they can be easily implemented and integrated into complex machine learning pipelines.
+Inspired by the methodology exposed in the article ["Similarity encoding for learning with dirty categorical variables"](https://link.springer.com/article/10.1007/s10994-018-5724-2), I wrote two Python classes **compatible with scikit-learn** capable of dealing with "dirty categories", which are categories with typos or a complex, implicit hierarchy.
 
-- The `StringAgglomerativeEncoder` can be used to **group dirty categories**, so it can serve **to assist and speed up automatic category cleaning processes**.
-- The `StringDistanceEncoder` class **projects the distance between the categories** found in the training data into a space of components extracted by `TruncatedSVD`, serving as **an alternative to the One Hot Encoding** method in prediction problems. It can also serve for **visualization purposes** and **exploratory analysis**.
+"Dirty categories" are a huge challenge in the data cleaning and modeling stages and, in the latter context, can be extremely harmful in terms of the cardinality of the categories when using methods such as One Hot Encoding. In that regard:
+
+- The `StringAgglomerativeEncoder` class clusters similar "dirty categories" and, thus, can serve to speed up and automate the data cleaning process. To work, the class vectorizes unique categories using the n-gram technique and calculates the distance between each vector using the Dice metric. With the distance matrix, the Hierarchical Clustering method is applied.
+
+- The `StringDistanceEncoder` class, instead of calculating the distance matrix, uses the n-gram vectors representing each category to extract components by the Singular Value Decomposition (SVD) method, which is commonly employed as a dimensionality reduction method in the context of machine learning. If two components are extracted in total, it is possible to project the "dirty categories" on a plot and thus visualize the distance between them!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
